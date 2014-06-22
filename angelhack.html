@@ -4,21 +4,26 @@
 
 <body>
 	<div id="main">
-		<div id="nav_tray">
-			<div class="btn" id="home_btn">
-				<img src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-128.png">
-			</div>
-			<div class="btn" id="back_btn">&lt;</div>
-		</div>
-  	{{> main}}
+		{{> main}}
   </div>
 </body>
 
 <template name="main">
+	<div id="nav_tray">
+		<div class="btn" id="home_btn">
+			<img src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-128.png">
+		</div>
+		{{#if searchReady true}}
+			<div class="btn" id="back_btn">&lt;</div>
+		{{/if}}
+		{{#if recipeReady true}}
+			<div class="btn" id="back_btn">&lt;</div>
+		{{/if}}
+	</div>
 	<div id="content">
 	  <h1>{{greeting}}</h1>
 	  <div id="search_area">
-	  	<input id="ingredient_box" placeholder="What do you have?"/>
+	  	<input id="ingredient_box" placeholder="What's in your fridge?"/>
 	  	<div class="btn" id="add_ingredient">Add</div>
 	  </div>
 	  <div id="food_items">
@@ -29,6 +34,11 @@
 	{{#if searchReady true}}
 		<div id="recipe_results">
 			{{> searchResults}}
+		</div>
+	{{/if}}
+	{{#if recipeReady true}}
+		<div id="recipe_info">
+			{{> recipeInfo}}
 		</div>
 	{{/if}}
 </template>
@@ -42,10 +52,25 @@
 <template name="searchResults">
 	<div id="result_contents">
 		{{#each results}}
-			<div class="item">
-				<img src=""/>
-				<p>{{this.recipeName}}</p>
+			<div class="link item" arrayID="{{this.ind}}">
+				<img src="{{this.src}}"/>
+				<p >{{this.name}}</p>
 			</div>
-		{{/each}}
+	  {{else}}
+	    <h1>Bummer. No recipes found dawg.</h1>
+	  {{/each}}
+	</div>
+</template>
+
+<template name="recipeInfo">
+	<div id="recipe_info_con">
+		<h1>{{recipeItem.name}}</h1>
+		<img src="{{recipeItem.src}}"/>
+		<div class="ingredients_list">
+			<h2>Your ingredients!</h2>
+			{{#each recipeItem.ingredients}}
+				<p>{{this}}</p>
+	  	{{/each}}
+		</div>
 	</div>
 </template>
