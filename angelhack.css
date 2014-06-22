@@ -14,6 +14,15 @@ body {
 	height: 100%;
 	background-image: url("http://fc04.deviantart.net/fs70/i/2011/281/2/5/weed_by_dubesinhower-d4c7tzo.jpg");
 	/*  background-image: url("http://blsciblogs.baruch.cuny.edu/fro12lc16/files/2012/09/Food-Wallpaper-20.jpg"); */
+	background:
+linear-gradient(27deg, #151515 5px, transparent 5px) 0 5px,
+linear-gradient(207deg, #151515 5px, transparent 5px) 10px 0px,
+linear-gradient(27deg, #222 5px, transparent 5px) 0px 10px,
+linear-gradient(207deg, #222 5px, transparent 5px) 10px 5px,
+linear-gradient(90deg, #1b1b1b 10px, transparent 10px),
+linear-gradient(#1d1d1d 25%, #1a1a1a 25%, #1a1a1a 50%, transparent 50%, transparent 75%, #242424 75%, #242424);
+background-color: #131313;
+background-size: 20px 20px;
 }
 
 input:focus {
@@ -30,6 +39,7 @@ input:focus {
 	font-size: 30px;
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
+	overflow: auto;
 }
 
 #content > div {
@@ -37,7 +47,6 @@ input:focus {
 }
 
 #content h1, #content input {
-	display: block;
 	margin: auto;
 }
 
@@ -54,34 +63,104 @@ input:focus {
 	border-radius: 10px;
 }
 
-#food-items span:after{
+#search_area * {
+	display: inline-block;
+}
+
+#search_area .btn {
+	padding: 32px 30px;
+	margin-left: -8px;
+	height: 38px;
+	margin-top: 10px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+#search_area input {
+	border-width: 0px;
+	-webkit-border-radius: 10px 0 0 10px;
+	border-radius: 10px 0 0 10px;
+}
+
+#food_items span:after{
 	content: ", ";
 }
 
-#food-items span:last-child:after {
+#food_items span:last-child:after {
 	content: "";
 }
 
-#submit {
+#recipe_results {
+	position: absolute;
+	background: rgba(255,255,155,0.8);
+	top: 0;
+	padding: 5%;
+	height: 100%;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+#result_contents .item {
+	width: 400px;
+	display: inline-block;
+}
+
+.btn {
 	padding: 10px 30px;
 	border-radius: 5px;
 	background: #eee;
 	display: inline-block;
 	color: #000;
-}
-
-.link {
 	cursor: pointer;
 	opacity: 0.9;
 }
 
-.link:hover {
+#content .btn {
+	font-size: 36px;
+}
+
+.btn:hover {
 	opacity: 1;
+}
+
+#submit_btn {
+	float: right;
+}
+
+#home_btn, #back_btn {
+	position: absolute;
+	left: 0;
+	padding: 10px;
+	opacity: 0.4;
+}
+
+#home_btn:hover, #back_btn:hover {
+	opacity: 0.7;
+}
+
+#home_btn {
+	border-radius: 0 0 5px 0;	
+	top: 0;
+	font-size: 58px;
+	padding-bottom: 0;
+}
+
+#home_btn img {
+	height: 58px;
+}
+
+#back_btn {
+	border-radius: 0 5px 5px 0;	
+	top: 50%;
+	font-size: 58px;
+	width: 58px;
 }
 
 @media (max-width: 1020px) {
 	#content input {
 		width: 80%;
-		height: 150px;
+		/*height: 150px;*/
 	}
 }

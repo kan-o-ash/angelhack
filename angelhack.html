@@ -3,22 +3,49 @@
 </head>
 
 <body>
-	<div id="content">
-  {{> input}}
+	<div id="main">
+		<div id="nav_tray">
+			<div class="btn" id="home_btn">
+				<img src="https://cdn4.iconfinder.com/data/icons/pictype-free-vector-icons/16/home-128.png">
+			</div>
+			<div class="btn" id="back_btn">&lt;</div>
+		</div>
+  	{{> main}}
   </div>
 </body>
 
-<template name="input">
-  <h1>{{greeting}}</h1>
-  <input id="ingredient_box" placeholder="What do you have?"/>
-  <div id="food-items">
-		{{> ingr}}
+<template name="main">
+	<div id="content">
+	  <h1>{{greeting}}</h1>
+	  <div id="search_area">
+	  	<input id="ingredient_box" placeholder="What do you have?"/>
+	  	<div class="btn" id="add_ingredient">Add</div>
+	  </div>
+	  <div id="food_items">
+			{{> ingr}}
+		</div>
+		<div class="btn" id="submit_btn">Submit</div>
 	</div>
-	<div class="link" id="submit">Submit</div>
+	{{#if searchReady true}}
+		<div id="recipe_results">
+			{{> searchResults}}
+		</div>
+	{{/if}}
 </template>
 
 <template name="ingr">
   {{#each foodItems}}
-  	<span>{{name}}</span>
+  	<span>{{.}}</span>
   {{/each}}
+</template>
+
+<template name="searchResults">
+	<div id="result_contents">
+		{{#each results}}
+			<div class="item">
+				<img src=""/>
+				<p>{{this.recipeName}}</p>
+			</div>
+		{{/each}}
+	</div>
 </template>
