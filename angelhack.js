@@ -1,7 +1,8 @@
-Ingredients = new Meteor.Collection("ingredients");
+APP_KEY = "f417e2ff0264769fc557b116fb4197d0";
+APP_ID = "b1229d17";
 
 if (Meteor.isClient) {
-  Meteor.subscribe('user-ingredients');
+  // Meteor.subscribe('user-ingredients');
 
   Template.input.greeting = function () {
     return "munchies.";
@@ -14,8 +15,7 @@ if (Meteor.isClient) {
   Template.ingr.foodItems = [];
 
   Template.input.events({
-    'keydown input': function () {
-      console.log(event);
+    'keyup #ingredient_box': function () {
       if (event.keyCode == 13) {
         var ingr = event.target.value;
         if (ingr) {
@@ -27,34 +27,38 @@ if (Meteor.isClient) {
           UI.insert(temp, node);
         }
       }
+    },
+    'click #submit': function () {
+      Meteor.call('getRecipe', Template.ingr.foodItems, function(error, response) {
+
+      });
     }
   });
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
-    if (Ingredients.find().count() === 0) {
-    }
+    //if (Ingredients.find().count() === 0) {
+    //}
   });
 
-  Meteor.publish('user-ingredients'), function publishFunction() {
-    return Ingredients.find({author: this.userId}, {sort: {date: -1}, limit: 10});
-  }
+
 
   Meteor.methods({
-    addIngredient: function (ingredient, userId) {
-      Ingredients.insert({name: ingredient, user_id: userId});
-    },
-    getRecipe: function () {
+    // addIngredient: function (ingredient, userId) {
+    //   Ingredients.insert({name: ingredient, user_id: userId});
+    // },
+
+    getRecipe: function (ingredients) {
+
+
       var params = {
-        '_app_key': "f417e2ff0264769fc557b116fb4197d0",
-        '_app_id': "b1229d17",
+        '_app_key': APP_KEY,
+        '_app_id': APP_ID,
         'allowedIngredient[]': "cognac"
       };
 
       //url_call = url + "?app_key=" + _app_key + "&_app_id=" + _app_id + "&allowedIngredient[]=cognac";
-      console.log(params);
-        result = 'test'
 
       // Do call here, return value with Future
       this.unblock();

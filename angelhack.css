@@ -16,16 +16,24 @@ body {
 	/*  background-image: url("http://blsciblogs.baruch.cuny.edu/fro12lc16/files/2012/09/Food-Wallpaper-20.jpg"); */
 }
 
+input:focus {
+	outline: none;
+}
+
 #content {
 	width: 800px;
-	height: 300px;
+	min-height: 300px;
 	background: rgba(0,0,0,0.5);
 	margin: auto;
-	padding: 20px;
+	padding: 20px 40px;
 	color: #eee;
 	font-size: 30px;
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
+}
+
+#content > div {
+	margin-top: 20px;
 }
 
 #content h1, #content input {
@@ -49,8 +57,26 @@ body {
 #food-items span:after{
 	content: ", ";
 }
+
 #food-items span:last-child:after {
 	content: "";
+}
+
+#submit {
+	padding: 10px 30px;
+	border-radius: 5px;
+	background: #eee;
+	display: inline-block;
+	color: #000;
+}
+
+.link {
+	cursor: pointer;
+	opacity: 0.9;
+}
+
+.link:hover {
+	opacity: 1;
 }
 
 @media (max-width: 1020px) {

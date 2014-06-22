@@ -10,10 +10,11 @@
 
 <template name="input">
   <h1>{{greeting}}</h1>
-  <input class="ourtext" placeholder="What do you have?"/>
+  <input id="ingredient_box" placeholder="What do you have?"/>
   <div id="food-items">
 		{{> ingr}}
 	</div>
+	<div class="link" id="submit">Submit</div>
 </template>
 
 <template name="ingr">
