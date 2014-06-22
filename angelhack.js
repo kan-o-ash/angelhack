@@ -11,33 +11,21 @@ if (Meteor.isClient) {
   //   return Ingredients.find();
   // }
 
-  Template.ingr.foodItems = [{"name":''}]
+  Template.ingr.foodItems = [];
 
   Template.input.events({
     'keydown input': function () {
       console.log(event);
       if (event.keyCode == 13) {
-        // Meteor.call('addIngredient', event.target.value, Meteor.default_connection._lastSessionId);
-        Template.ingr.foodItems.push({'name': event.target.value})
-        event.target.value = "";
-        var node = document.getElementById("food-items");
-        node.innerHTML ="";
-        var temp = UI.render(Template.ingr);
-        UI.insert(temp, node);
-      }
-    },
-    'click #input': function () {
-      // template data, if any, is available in 'this'
-      if (typeof console !== 'undefined') {
-        console.log("You pressed the button");
-        Meteor.call('getRecipe', function(err,response) {
-          if(err) {
-            Session.set('serverDataResponse', "Error:" + err.reason);
-            return;
-          }
-          Session.set('serverDataResponse', response);
-          console.log(response);
-        });
+        var ingr = event.target.value;
+        if (ingr) {
+          Template.ingr.foodItems.push({'name': ingr})
+          event.target.value = "";
+          var node = document.getElementById("food-items");   
+          node.innerHTML ="";
+          var temp = UI.render(Template.ingr);
+          UI.insert(temp, node);
+        }
       }
     }
   });

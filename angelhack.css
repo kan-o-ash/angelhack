@@ -1,13 +1,31 @@
 /* CSS declarations go here */
 
+html, body {
+	margin: 0;
+	height: 100%;
+}
 
 body {
+	padding-top: 5%;
+	text-align: center;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	height: 100%;
 	background-image: url("http://fc04.deviantart.net/fs70/i/2011/281/2/5/weed_by_dubesinhower-d4c7tzo.jpg");
+	/*  background-image: url("http://blsciblogs.baruch.cuny.edu/fro12lc16/files/2012/09/Food-Wallpaper-20.jpg"); */
 }
 
 #content {
-	margin-top: 100px;
-	text-align: center;
+	width: 800px;
+	height: 300px;
+	background: rgba(0,0,0,0.5);
+	margin: auto;
+	padding: 20px;
+	color: #eee;
+	font-size: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
 }
 
 #content h1, #content input {
@@ -16,11 +34,28 @@ body {
 }
 
 #content input {
-	width: 400px;
-	height: 50px;
+	width: 600px;
+	height: 100px;
 	-webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 	text-align: center;
-	font-size: 32px;
+	font-size: 42px;
+	font-style: italic;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+}
+
+#food-items span:after{
+	content: ", ";
+}
+#food-items span:last-child:after {
+	content: "";
+}
+
+@media (max-width: 1020px) {
+	#content input {
+		width: 80%;
+		height: 150px;
+	}
 }
