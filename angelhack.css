@@ -1,5 +1,10 @@
 /* CSS declarations go here */
 
+
+body {
+	background-image: url("http://fc04.deviantart.net/fs70/i/2011/281/2/5/weed_by_dubesinhower-d4c7tzo.jpg");
+}
+
 #content {
 	margin-top: 100px;
 	text-align: center;
@@ -16,6 +21,6 @@
 	-webkit-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 	-moz-box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
 	box-shadow: 3px 3px 5px 0px rgba(0,0,0,0.75);
-	text-align: left;
+	text-align: center;
 	font-size: 32px;
 }

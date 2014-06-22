@@ -4,14 +4,14 @@ if (Meteor.isClient) {
   Meteor.subscribe('user-ingredients');
 
   Template.input.greeting = function () {
-    return "Welcome to food shit.";
+    return "munchies.";
   };
 
   // Template.input.foodItems = function () {
   //   return Ingredients.find();
   // }
 
-  Template.ingr.foodItems = [{"name":'test'}]
+  Template.ingr.foodItems = [{"name":''}]
 
   Template.input.events({
     'keydown input': function () {
