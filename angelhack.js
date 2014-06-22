@@ -36,6 +36,8 @@ if (Meteor.isClient) {
   });
 }
 
+
+
 if (Meteor.isServer) {
   Meteor.startup(function () {
     //if (Ingredients.find().count() === 0) {
